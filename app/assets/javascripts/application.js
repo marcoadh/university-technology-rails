@@ -26,3 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
 $(document).ready(function () {
     $('.sidenav').sidenav();
 });
+
+$(document).on('turbolinks:load', function() {
+    $(".dropdown-trigger").dropdown();
+});
