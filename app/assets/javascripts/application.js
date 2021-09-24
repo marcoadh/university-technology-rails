@@ -23,10 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var instances = M.Sidenav.init(elems, options);
 });
 
-$(document).ready(function () {
-    $('.sidenav').sidenav();
-});
-
 $(document).on('turbolinks:load', function() {
+    $('.sidenav').sidenav();
     $(".dropdown-trigger").dropdown();
+    $('#fade-out-target').fadeOut(5000);
 });
