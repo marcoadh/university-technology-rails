@@ -26,5 +26,5 @@ document.addEventListener('DOMContentLoaded', function () {
 $(document).on('turbolinks:load', function() {
     $('.sidenav').sidenav();
     $(".dropdown-trigger").dropdown();
-    $('#fade-out-target').fadeOut(5000);
+    $('#fade-out-target').fadeOut(7000);
 });
