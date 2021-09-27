@@ -1,14 +1,8 @@
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">three</a></li>
-</ul>
 <ul id="dropdown2" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
+  <li><a href="#!">Ver mis cursos</a></li>
+  <li><a href="#!">Editar perfil</a></li>
   <li class="divider"></li>
-  <li><a href="#!">three</a></li>
+  <li><%= link_to 'Cerrar Sesión', logout_path, method: :delete %></li>
 </ul>
 <nav>
   <div class="nav-wrapper">
@@ -17,16 +11,36 @@
     </div>
     <a href="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><%= link_to 'Cursos', root_path %></li>
-      <li><%= link_to 'Estudiantes', students_path %></li>
-      <li><a href="">Cuenta</a></li>
-      <li><a class="dropdown-trigger" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+      <% if logged_in? %>
+        <li><%= link_to 'Cursos', root_path %></li>
+        <li><%= link_to 'Estudiantes', students_path %></li>
+        <li><a class="dropdown-trigger" data-target="dropdown1"><%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>
+        <!-- Menu desplegable -->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><%= link_to 'Editar perfil', student_path(current_user.id) %></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Cerrar Sesión', logout_path, method: :delete %></li>
+        </ul>
+        <!-- Menu desplegable -->
+      <% else %>
+        <li><%= link_to 'Iniciar Sesión', login_path, class: "btn blue" %></li>
+      <% end %>
     </ul>
     <ul class="sidenav" id="mobile-demo">
-      <li><%= link_to 'Cursos', root_path %></li>
-      <li><%= link_to 'Estudiantes', students_path %></li>
-      <li><a href="">Cuenta</a></li>
-      <li><a class="dropdown-trigger" data-target="dropdown2">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+      <% if logged_in? %>
+        <li><%= link_to 'Cursos', root_path %></li>
+        <li><%= link_to 'Estudiantes', students_path %></li>
+        <li><a class="dropdown-trigger" data-target="dropdown2"><%= current_user.email %><i class="material-icons">arrow_drop_down</i></a></li>
+        <!-- Menu desplegable -->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><%= link_to 'Editar perfil', student_path(current_user.id) %></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Cerrar Sesión', logout_path, method: :delete %></li>
+        </ul>
+        <!-- Menu desplegable -->
+      <% else %>
+        <li><%= link_to 'Iniciar Sesión', login_path, class: "btn blue" %></li>
+      <% end %>
     </ul>
   </div>
 </nav>
