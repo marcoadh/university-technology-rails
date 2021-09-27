@@ -15,13 +15,26 @@
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <%= f.label :email, 'Correo Electrónico' %>
+                <%= f.label :email, 'Correo Electrónico', class: "active" %>
                 <%= f.email_field :email %>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <%= f.submit(@student.new_record? ? "Registrate" : "Actualizar", class: "btn orange waves-effect waves-light right") %>
+                <%= f.label :password, 'Contraseña', class: "active" %>
+                <%= f.password_field :password %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label :password_confirmation, 'Confirmar Contraseña', class: "active" %>
+                <%= f.password_field :password_confirmation %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.button(@student.new_record? ? "Registrate" : "Actualizar", class: "btn orange waves-effect waves-light right") %>
               </div>
             </div>
           <% end %>
