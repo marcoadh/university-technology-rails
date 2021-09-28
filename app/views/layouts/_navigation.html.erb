@@ -1,9 +1,3 @@
-<ul id="dropdown2" class="dropdown-content">
-  <li><a href="#!">Ver mis cursos</a></li>
-  <li><a href="#!">Editar perfil</a></li>
-  <li class="divider"></li>
-  <li><%= link_to 'Cerrar Sesión', logout_path, method: :delete %></li>
-</ul>
 <nav>
   <div class="nav-wrapper">
     <div class="container">
@@ -17,29 +11,32 @@
         <li><a class="dropdown-trigger" data-target="dropdown1"><%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>
         <!-- Menu desplegable -->
         <ul id="dropdown1" class="dropdown-content">
-          <li><%= link_to 'Editar perfil', student_path(current_user.id) %></li>
+          <li><%= link_to 'Perfil', student_path(current_user) %></li>
           <li class="divider"></li>
           <li><%= link_to 'Cerrar Sesión', logout_path, method: :delete %></li>
         </ul>
         <!-- Menu desplegable -->
       <% else %>
         <li><%= link_to 'Iniciar Sesión', login_path, class: "btn blue" %></li>
+        <li><%= link_to 'Registrarse', new_student_path, class: "btn success" %></li>
       <% end %>
     </ul>
+    <%# -------------------------------------------------------------------- Mobile %>
     <ul class="sidenav" id="mobile-demo">
       <% if logged_in? %>
         <li><%= link_to 'Cursos', root_path %></li>
         <li><%= link_to 'Estudiantes', students_path %></li>
         <li><a class="dropdown-trigger" data-target="dropdown2"><%= current_user.email %><i class="material-icons">arrow_drop_down</i></a></li>
         <!-- Menu desplegable -->
-        <ul id="dropdown1" class="dropdown-content">
-          <li><%= link_to 'Editar perfil', student_path(current_user.id) %></li>
+        <ul id="dropdown2" class="dropdown-content">
+          <li><%= link_to 'Perfil', student_path(current_user) %></li>
           <li class="divider"></li>
           <li><%= link_to 'Cerrar Sesión', logout_path, method: :delete %></li>
         </ul>
         <!-- Menu desplegable -->
       <% else %>
         <li><%= link_to 'Iniciar Sesión', login_path, class: "btn blue" %></li>
+        <li><%= link_to 'Registrarse', new_student_path, class: "btn success" %></li>
       <% end %>
     </ul>
   </div>
